@@ -4,6 +4,13 @@ Not impressed with UberEats, DoorDash, GrubHub pizza offerings?
 You can now try PizzaBox, the latest food delivery service. 
 It is a command line-based application focused on nothing but pizzas.
 
+## as a minimum viable product
+
+- should be an mvp (minimum viable product) status (20 hours)
+  - able to at least place an order with 1 pizza
+  - able to at least have 10 total validation unit tests for Customer, Order, Pizza, Store
+  - able to save a placed order including customer info, pizza info, store info
+
 ## as a customer
 
 - should be able to launch the application
@@ -40,7 +47,7 @@ It is a command line-based application focused on nothing but pizzas.
 ## architecture
 
 - [solution] PizzaBox.sln
-  - [project - console] PizzaBox.Client.csproj
+  - [project - mvc] PizzaBox.Client.csproj
     - [directory] Singletons
   - [project - classlib] PizzaBox.Domain.csproj
     - [directory] Abstracts
@@ -91,15 +98,12 @@ The application is centered around the interaction of 4 main objects:
 + .NET Core - C#
 + .NET Core - EF + SQL
 + .NET Core - xUnit
++ ASP.NET Core - MVC
 
 ## timelines
 
-- code-freeze on Apr-26 at 11.59p Central
-- presentation on Apr-28 starting at 9.30a Central
+- code-freeze on May-10 at 11.59p Central
+- presentation on May-11 starting at 1.00p Central
 - try to implement as many requirements as you can (don't push to get all done)
-- should be an mvp (minimum viable product) status (20 hours)
-  - able to at least place an order with 1 pizza
-  - able to at least have 10 total validation unit tests for Customer, Order, Pizza, Store
-  - able to save a placed order including customer info, pizza info, store info
 
 > the goal is to try to complete as many reqs as you can in the time alloted. :)
