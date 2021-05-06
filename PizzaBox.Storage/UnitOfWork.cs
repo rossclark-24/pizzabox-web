@@ -7,6 +7,8 @@ namespace PizzaBox.Storage
     private readonly PizzaBoxContext _context;
 
     public CrustRepository Crusts { get; }
+    public OrderRepository Orders { get; set; }
+    public PizzaRepository Pizzas { get; set; }
     public SizeRepository Sizes { get; }
     public ToppingRepository Toppings { get; }
 
@@ -15,8 +17,15 @@ namespace PizzaBox.Storage
       _context = context;
 
       Crusts = new CrustRepository(_context);
+      Orders = new OrderRepository(_context);
+      Pizzas = new PizzaRepository(_context);
       Sizes = new SizeRepository(_context);
       Toppings = new ToppingRepository(_context);
+    }
+
+    public void Save()
+    {
+      _context.SaveChanges();
     }
   }
 }

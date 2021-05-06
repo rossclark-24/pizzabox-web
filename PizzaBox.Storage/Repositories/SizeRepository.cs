@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using PizzaBox.Domain.Interfaces;
 using PizzaBox.Domain.Models;
 
@@ -18,14 +20,14 @@ namespace PizzaBox.Storage.Repositories
       throw new System.NotImplementedException();
     }
 
-    public bool Insert()
+    public bool Insert(Size entry)
     {
       throw new System.NotImplementedException();
     }
 
-    public IEnumerable<Size> Select()
+    public IEnumerable<Size> Select(Func<Size, bool> filter)
     {
-      return _context.Sizes;
+      return _context.Sizes.Where(filter);
     }
 
     public Size Update()

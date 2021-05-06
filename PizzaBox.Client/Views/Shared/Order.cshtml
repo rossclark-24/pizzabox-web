@@ -7,6 +7,7 @@
     <legend>Crusts</legend>
 
     @Html.ValidationMessageFor(m => m.SelectedCrust)
+
     @foreach (var item in Model.Crusts)
     {
       <div class="form-check">
@@ -20,6 +21,7 @@
     <legend>Sizes</legend>
 
     @Html.ValidationMessageFor(m => m.SelectedSize)
+
     @foreach (var item in Model.Sizes)
     {
       <div class="form-check">
@@ -33,6 +35,7 @@
     <legend>Toppings</legend>
 
     @Html.ValidationMessageFor(m => m.SelectedToppings)
+
     @foreach (var item in Model.Toppings)
     {
       <div class="form-check">

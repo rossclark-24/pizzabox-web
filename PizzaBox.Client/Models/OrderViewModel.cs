@@ -26,9 +26,9 @@ namespace PizzaBox.Client.Models
 
     public void Load(UnitOfWork unitOfWork)
     {
-      Crusts = unitOfWork.Crusts.Select().ToList();
-      Sizes = unitOfWork.Sizes.Select().ToList();
-      Toppings = unitOfWork.Toppings.Select().ToList();
+      Crusts = unitOfWork.Crusts.Select(c => !string.IsNullOrWhiteSpace(c.Name)).ToList();
+      Sizes = unitOfWork.Sizes.Select(s => !string.IsNullOrWhiteSpace(s.Name)).ToList();
+      Toppings = unitOfWork.Toppings.Select(t => !string.IsNullOrWhiteSpace(t.Name)).ToList();
     }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

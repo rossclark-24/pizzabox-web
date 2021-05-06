@@ -7,14 +7,22 @@ namespace PizzaBox.Storage
   public class PizzaBoxContext : DbContext
   {
     public DbSet<Crust> Crusts { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<Pizza> Pizzas { get; set; }
     public DbSet<Size> Sizes { get; set; }
     public DbSet<Topping> Toppings { get; set; }
 
     public PizzaBoxContext(DbContextOptions options) : base(options) { }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="builder"></param>
     protected override void OnModelCreating(ModelBuilder builder)
     {
       builder.Entity<Crust>().HasKey(e => e.EntityId);
+      builder.Entity<Order>().HasKey(e => e.EntityId);
+      builder.Entity<Pizza>().HasKey(e => e.EntityId);
       builder.Entity<Size>().HasKey(e => e.EntityId);
       builder.Entity<Topping>().HasKey(e => e.EntityId);
 
@@ -39,11 +47,11 @@ namespace PizzaBox.Storage
 
       builder.Entity<Topping>().HasData(new[]
       {
-        new Topping() { EntityId = 1, Name = "meat" },
-        new Topping() { EntityId = 2, Name = "veggie" },
-        new Topping() { EntityId = 3, Name = "gluten-free" },
-        new Topping() { EntityId = 4, Name = "vegan" },
-        new Topping() { EntityId = 5, Name = "plain" }
+        new Topping() { EntityId = 1, Name = "pepperoni" },
+        new Topping() { EntityId = 2, Name = "pineapple" },
+        new Topping() { EntityId = 3, Name = "ham" },
+        new Topping() { EntityId = 4, Name = "green peppers" },
+        new Topping() { EntityId = 5, Name = "black olives" }
       });
     }
   }
