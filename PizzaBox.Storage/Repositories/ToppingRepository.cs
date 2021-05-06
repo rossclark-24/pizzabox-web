@@ -6,6 +6,13 @@ namespace PizzaBox.Storage.Repositories
 {
   public class ToppingRepository : IRepository<Topping>
   {
+    private readonly PizzaBoxContext _context;
+
+    public ToppingRepository(PizzaBoxContext context)
+    {
+      _context = context;
+    }
+
     public bool Delete()
     {
       throw new System.NotImplementedException();
@@ -18,7 +25,7 @@ namespace PizzaBox.Storage.Repositories
 
     public IEnumerable<Topping> Select()
     {
-      return new List<Topping> { new Topping(), new Topping() };
+      return _context.Toppings;
     }
 
     public Topping Update()

@@ -6,6 +6,13 @@ namespace PizzaBox.Storage.Repositories
 {
   public class SizeRepository : IRepository<Size>
   {
+    private readonly PizzaBoxContext _context;
+
+    public SizeRepository(PizzaBoxContext context)
+    {
+      _context = context;
+    }
+
     public bool Delete()
     {
       throw new System.NotImplementedException();
@@ -18,7 +25,7 @@ namespace PizzaBox.Storage.Repositories
 
     public IEnumerable<Size> Select()
     {
-      return new List<Size> { new Size(), new Size() };
+      return _context.Sizes;
     }
 
     public Size Update()

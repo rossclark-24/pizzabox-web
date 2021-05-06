@@ -6,6 +6,13 @@ namespace PizzaBox.Storage.Repositories
 {
   public class OrderRepository : IRepository<Order>
   {
+    private readonly PizzaBoxContext _context;
+
+    public OrderRepository(PizzaBoxContext context)
+    {
+      _context = context;
+    }
+
     public bool Delete()
     {
       throw new System.NotImplementedException();
