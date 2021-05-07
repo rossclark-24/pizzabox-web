@@ -6,6 +6,7 @@ jobs:
       - run: dotnet build
   # test: xunit + coverlet
   # analyze: sonarcloud = static code analysis
+  # package: docker image
 
 name: ci-pipeline
 
