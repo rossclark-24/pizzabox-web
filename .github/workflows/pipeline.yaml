@@ -4,6 +4,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: dotnet build
+  # test: xunit + coverlet
+  # analyze: sonarcloud = static code analysis
 
 name: ci-pipeline
 

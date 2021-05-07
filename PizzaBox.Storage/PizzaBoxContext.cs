@@ -29,7 +29,7 @@ namespace PizzaBox.Storage
       OnModelSeeding(builder);
     }
 
-    private void OnModelSeeding(ModelBuilder builder)
+    private static void OnModelSeeding(ModelBuilder builder)
     {
       builder.Entity<Crust>().HasData(new[]
       {
