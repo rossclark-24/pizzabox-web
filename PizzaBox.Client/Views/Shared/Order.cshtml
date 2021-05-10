@@ -48,5 +48,19 @@
     }
   </fieldset>
 
+  <fieldset>
+
+  <legend>Store</legend>
+  @Html.ValidationMessageFor(m => m.SelectedStore)
+
+  @foreach (var item in Model.Stores)
+  {
+    <div class="form-check">
+      <label class="form-check-label" for="@item">@item</label>
+      <input class="form-check-input" type="radio" asp-for="SelectedStore" value="@item">
+    </div>
+  }
+</fieldset>
+
   <button type="submit">make pizza</button>
 </form>

@@ -1,6 +1,8 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using PizzaBox.Domain.Abstracts;
 using PizzaBox.Domain.Models;
+using PizzaBox.Domain.Models.Stores;
 
 namespace PizzaBox.Storage
 {
@@ -11,6 +13,7 @@ namespace PizzaBox.Storage
     public DbSet<Pizza> Pizzas { get; set; }
     public DbSet<Size> Sizes { get; set; }
     public DbSet<Topping> Toppings { get; set; }
+    public DbSet<AStore> Stores { get; set; }
 
     public PizzaBoxContext(DbContextOptions options) : base(options) { }
 
@@ -25,6 +28,10 @@ namespace PizzaBox.Storage
       builder.Entity<Pizza>().HasKey(e => e.EntityId);
       builder.Entity<Size>().HasKey(e => e.EntityId);
       builder.Entity<Topping>().HasKey(e => e.EntityId);
+      builder.Entity<AStore>().HasKey(e => e.EntityId);
+
+      builder.Entity<ChicagoStore>().HasBaseType<AStore>();
+      builder.Entity<NewYorkStore>().HasBaseType<AStore>();
 
       OnModelSeeding(builder);
     }
@@ -52,6 +59,15 @@ namespace PizzaBox.Storage
         new Topping() { EntityId = 3, Name = "ham" },
         new Topping() { EntityId = 4, Name = "green peppers" },
         new Topping() { EntityId = 5, Name = "black olives" }
+      });
+
+      builder.Entity<ChicagoStore>().HasData(new[]
+      {
+        new ChicagoStore() { EntityId = 1, Name = "Downtown Chicago"}
+      });
+      builder.Entity<NewYorkStore>().HasData(new[]
+      {
+        new NewYorkStore() { EntityId = 2, Name = "Big Apple"}
       });
 
     
