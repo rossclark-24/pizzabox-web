@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using PizzaBox.Client.Models;
+using PizzaBox.Domain.Abstracts;
 using PizzaBox.Domain.Models;
 using PizzaBox.Storage;
 
@@ -24,6 +25,7 @@ namespace PizzaBox.Client.Controllers
     {
       if (ModelState.IsValid)
       {
+        var store = _unitOfWork.Stores.Select(s => s.Name == order.SelectedStore).First();
         var crust = _unitOfWork.Crusts.Select(c => c.Name == order.SelectedCrust).First();
         var size = _unitOfWork.Sizes.Select(s => s.Name == order.SelectedSize).First();
         var toppings = new List<Topping>();
@@ -34,7 +36,7 @@ namespace PizzaBox.Client.Controllers
         }
 
         var newPizza = new Pizza { Crust = crust, Size = size, Toppings = toppings };
-        var newOrder = new Order { Pizzas = new List<Pizza> { newPizza } };
+        var newOrder = new Order { Pizzas = new List<Pizza> { newPizza }, Store = store };
 
         _unitOfWork.Orders.Insert(newOrder);
         _unitOfWork.Save();
