@@ -7,9 +7,55 @@ jobs:
 
 
   test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -P:CoverletOutput='test_coverage/' -l trx -r ./'test_result'/
+  
+  analyze:
+    needs:
+        - build
+        - test
+    env:
+      SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: dotnet tool install -g dotnet-sonarscanner
+      - run: dotnet-sonarscanner begin -k:'pizzabox' -o:'rossclark-24' -d:sonar.login=$SONAR_TOKEN -d:sonar.host.url:'https://sonarcloud.io'
+      - run: dotnet build
+      - run: dotnet-sonarscanner end -d:sonar.login=$SONAR_TOKEN
 
 
   package:
+    needs:
+      - analyze
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker login
+      - run: docker image build -F Dockerfile -t pizzabox .
+      - run: docker image tag pizzabox rossclark-24/pizzabox
+      - run: docker push rossclark-24/pizzabox
+      - run: docker logout
+
+  login:
+    needs:
+      - package
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: azure/login@v1
+
+  deploy:
+    needs:
+      - login
+    runs-on: ubuntu20.04
+    steps:
+      - uses: azure/webapps-deploy@v2
+        with:
+          app-name: pizzabox2021
+          images: rossclark-24/pizzabox
 
 name: ci-pipeline
 on: push
