@@ -5,7 +5,6 @@ jobs:
       - uses: actions/checkout@latest
       - run: dotnet build 
 
-
   test:
     runs-on: ubuntu-20.04
     steps:
@@ -29,32 +28,31 @@ jobs:
 
 
   package:
+    env:
+        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+        DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
     needs:
       - analyze
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - run: docker login
-      - run: docker image build -F Dockerfile -t pizzabox .
-      - run: docker image tag pizzabox rossclark-24/pizzabox
+      - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_TOKEN
+      - run: docker image build -f Dockerfile -t rossclark24/pizzabox .
+      - run: docker image tag pizzabox rossclark24/pizzabox
       - run: docker push rossclark-24/pizzabox
       - run: docker logout
 
-  login:
-    needs:
-      - package
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: azure/login@v1
-
   deploy:
     needs:
-      - login
+      - package
     runs-on: ubuntu20.04
     steps:
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - uses: azure/webapps-deploy@v2
         with:
-          app-name: pizzabox2021
+          app-name: pizzaboxweb
           images: rossclark-24/pizzabox
 
 name: ci-pipeline

@@ -5,6 +5,7 @@ namespace PizzaBox.Testing.Tests
 {
   public class PizzaTests
   {
+    [Fact]
     public void Test_PizzaConstructor()
     {
       var sut = new Pizza();
