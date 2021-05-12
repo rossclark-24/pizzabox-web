@@ -36,9 +36,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker image build -f Dockerfile -t pizzabox .
-      - run: docker image tag pizzabox fredbelotte/pizzabox
+      - run: docker image tag pizzabox rossclark24/pizzabox
       - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
-      - run: docker push fredbelotte/pizzabox
+      - run: docker push rossclark/pizzabox
       - run: docker logout
 
   deploy:
