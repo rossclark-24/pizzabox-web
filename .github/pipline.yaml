@@ -38,7 +38,11 @@ jobs:
       - run: docker image build -f Dockerfile -t pizzabox .
       - run: docker image tag pizzabox rossclark24/pizzabox
       - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
+<<<<<<< HEAD
       - run: docker push rossclark/pizzabox
+=======
+      - run: docker push rossclark24/pizzabox
+>>>>>>> 312013e4ecba89a68e6598256288b5a8b0b375f9
       - run: docker logout
 
   deploy:
@@ -52,7 +56,7 @@ jobs:
       - uses: azure/webapps-deploy@v2
         with:
           app-name: pizzaboxdemo
-          images: fredbelotte/pizzabox
+          images: rossclark-24/pizzabox
 
 name: ci-pipeline
 
