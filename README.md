@@ -13,16 +13,16 @@ It is a command line-based application focused on nothing but pizzas.
 + .NET Core - xUnit
 + ASP.NET Core - MVC
 
-##Features
+## Features
 + Select a Store
 + Select a Pre-Made Pizza
 + Customize your own Pizza with custom toppings
 + Checkout page with Order
 
-##Getting Started
+## Getting Started
 +'git clone 
 
-## architecture
+## Architecture
 
 - [solution] PizzaBox.sln
   - [project - mvc] PizzaBox.Client.csproj
@@ -35,7 +35,7 @@ It is a command line-based application focused on nothing but pizzas.
   - [project - xunit] PizzaBox.Testing.csproj
     - [directory] Tests
 
-## requirements
+## Requirements
 
 The application is centered around the interaction of 4 main objects:
 - Customer
