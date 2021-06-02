@@ -51,3 +51,9 @@ The application is centered around the interaction of 4 main objects:
 - Pizza
 - Store
 
+## Contributors
++ Ross Clark
+
+## License
+
+
