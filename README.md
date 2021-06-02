@@ -55,5 +55,5 @@ The application is centered around the interaction of 4 main objects:
 + Ross Clark
 
 ## License
-
++ MIT License
 
