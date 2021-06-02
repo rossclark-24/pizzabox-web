@@ -1,5 +1,7 @@
 # Pizzabox
 
+## Project Description
+
 Not impressed with UberEats, DoorDash, GrubHub pizza offerings?
 You can now try PizzaBox, the latest food delivery service. 
 It is a command line-based application focused on nothing but pizzas.
@@ -12,6 +14,13 @@ It is a command line-based application focused on nothing but pizzas.
 + ASP.NET Core - MVC
 
 ##Features
++ Select a Store
++ Select a Pre-Made Pizza
++ Customize your own Pizza with custom toppings
++ Checkout page with Order
+
+##Getting Started
++'git clone 
 
 ## architecture
 
