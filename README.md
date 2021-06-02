@@ -22,9 +22,9 @@ It is a command line-based application focused on nothing but pizzas.
 ## Getting Started
 + 'git clone https://github.com/rossclark-24/pizzabox-web.git'
 + Install Entity Framework Design
-++ 'dotnet add package Microsoft.EntityFrameworkCore.Design'
+- 'dotnet add package Microsoft.EntityFrameworkCore.Design'
 + Install Entity Framework Core
-++ 'dotnet add package Microsoft.EntityFrameworkCore'
+- 'dotnet add package Microsoft.EntityFrameworkCore'
 
 ## Architecture
 
