@@ -26,6 +26,10 @@ It is a command line-based application focused on nothing but pizzas.
 + Install Entity Framework Core
 - 'dotnet add package Microsoft.EntityFrameworkCore'
 
+## Usage
++ Run locally or deploy using any method necessary
++ From main folder run : 'dotnet run -p PizzaBox.Client' to run locally
+
 ## Architecture
 
 - [solution] PizzaBox.sln
